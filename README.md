@@ -64,4 +64,4 @@ $definitions["message.Sitemap.exclude"] = "Channels selected here and topics ins
 
 ### Screenshots
 Settings page
-![Settings](http://i.imgur.com/xq3WbLf.png)
+![Settings]()
