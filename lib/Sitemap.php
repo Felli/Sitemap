@@ -62,6 +62,15 @@ class Sitemap {
 		return $this->domain;
 	}
 
+        /**
+	 * Assigns XMLWriter object instance
+	 *
+	 * @param \XMLWriter $writer 
+	 */
+	private function setWriter(\XMLWriter $writer) {
+		$this->writer = $writer;
+	}
+
 	/**
 	 * Returns XMLWriter object instance
 	 *
@@ -71,14 +80,16 @@ class Sitemap {
 		return $this->writer;
 	}
 
-	/**
-	 * Assigns XMLWriter object instance
-	 *
-	 * @param \XMLWriter $writer 
+/**
+	 * Sets paths of sitemaps
+	 * 
+	 * @param string $path
+	 * @return Sitemap
 	 */
-	private function setWriter(\XMLWriter $writer) {
-		$this->writer = $writer;
-	}
+	public function setPath($path) {
+		$this->path = $path;
+		return $this;
+        }
 
 	/**
 	 * Returns path of sitemaps
@@ -89,27 +100,7 @@ class Sitemap {
 		return $this->path;
 	}
 
-	/**
-	 * Sets paths of sitemaps
-	 * 
-	 * @param string $path
-	 * @return Sitemap
-	 */
-	public function setPath($path) {
-		$this->path = $path;
-		return $this;
-	}
-
-	/**
-	 * Returns filename of sitemap file
-	 * 
-	 * @return string
-	 */
-	private function getFilename() {
-		return $this->filename;
-	}
-
-	/**
+        /**
 	 * Sets filename of sitemap file
 	 * 
 	 * @param string $filename
@@ -118,6 +109,15 @@ class Sitemap {
 	public function setFilename($filename) {
 		$this->filename = $filename;
 		return $this;
+	}
+	
+	/**
+	 * Returns filename of sitemap file
+	 * 
+	 * @return string
+	 */
+	private function getFilename() {
+		return $this->filename;
 	}
 
 	/**
@@ -161,9 +161,9 @@ class Sitemap {
 	private function startSitemap() {
 		$this->setWriter(new \XMLWriter());
 		if ($this->getCurrentSitemap()) {
-			$this->getWriter()->openURI($this->getPath() . $this->getFilename() . self::SEPERATOR . $this->getCurrentSitemap() . self::EXT);
+			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::SEPERATOR . $this->getCurrentSitemap() . self::EXT);
 		} else {
-			$this->getWriter()->openURI($this->getPath() . $this->getFilename() . self::EXT);
+			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::EXT);
 		}
 		$this->getWriter()->startDocument('1.0', 'UTF-8');
 		$this->getWriter()->setIndent(true);
