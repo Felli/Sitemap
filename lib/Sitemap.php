@@ -161,10 +161,10 @@ class Sitemap {
 	private function startSitemap() {
 		$this->setWriter(new \XMLWriter());
 		if ($this->getCurrentSitemap()) {
-			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::SEPERATOR . $this->getCurrentSitemap() . self::EXT);
-		} else {
-			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::EXT);
-		}
++			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::SEPERATOR . $this->getCurrentSitemap() . self::EXT);
+ 		} else {
+                        $this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::EXT);
+}
 		$this->getWriter()->startDocument('1.0', 'UTF-8');
 		$this->getWriter()->setIndent(true);
 		$this->getWriter()->startElement('urlset');
