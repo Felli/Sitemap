@@ -80,7 +80,7 @@ class Sitemap {
 		return $this->writer;
 	}
 
-/**
+        /**
 	 * Sets paths of sitemaps
 	 * 
 	 * @param string $path
@@ -161,7 +161,7 @@ class Sitemap {
 	private function startSitemap() {
 		$this->setWriter(new \XMLWriter());
 		if ($this->getCurrentSitemap()) {
-+			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::SEPERATOR . $this->getCurrentSitemap() . self::EXT);
+			$this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::SEPERATOR . $this->getCurrentSitemap() . self::EXT);
  		} else {
                         $this->getWriter()->openURL($this->getPath() . $this->getFilename() . self::EXT);
 }
